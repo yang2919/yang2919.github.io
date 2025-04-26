@@ -7,7 +7,7 @@ tags: featured
 image: /assets/article_images/2014-08-29-welcome-to-jekyll/desktop.JPG
 ---
 SSFFT: Energy-Efficient Selective Scaling for Fast Fourier Transform in Embedded GPUs
-**Dongwon Yang**, Jaebeom Jeon, Minseong Gil, Junsu Kim, Seondeok Kim, Gunjae Koo, Myung Kuk Yoon, and Yunho Oh
+Dongwon Yang, Jaebeom Jeon, Minseong Gil, Junsu Kim, Seondeok Kim, Gunjae Koo, Myung Kuk Yoon, and Yunho Oh
 The 26th ACM SIGPLAN/SIGBED International Conference on Languages, Compilers, and Tools for Embedded Systems (LCTES 2025), Seoul, Korea, 2025.
 
 <footer class="site-footer">
