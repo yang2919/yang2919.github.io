@@ -14,7 +14,7 @@ logo: "/assets/images/logo.jpeg"
 float_logo: true # true, false (default)
 
 # blog cover
-cover: "/assets/images/cover.jpeg"
+cover: "/assets/images/cover.jpg"
 
 name: 'Dongwon Yang'
 author: 'Dongwon Yang'
