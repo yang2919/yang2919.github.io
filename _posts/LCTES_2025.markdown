@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  LCTES 2025
+title:  "LCTES 2025"
 date:   2025-04
 categories: publication
 tags: featured
