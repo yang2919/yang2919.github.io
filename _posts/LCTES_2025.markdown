@@ -2,7 +2,7 @@
 layout: post
 title:  "LCTES 2025"
 date:   2014-11-30 14:34:25
-categories: publication
+categories: public
 tags: featured
 image: /assets/article_images/2014-08-29-welcome-to-jekyll/desktop.JPG
 ---
