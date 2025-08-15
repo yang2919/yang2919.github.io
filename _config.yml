@@ -1,63 +1,60 @@
+title: Your awesome title
+author: GitHub User
+email: your-email@domain.com
+description: > # this means to ignore newlines until "show_exerpts:"
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+show_excerpts: true # set to true to show excerpts on the homepage
+
+# Minima date format
+# refer to http://shopify.github.io/liquid/filters/date/ if you want to customize this
+sass:
+  sass_dir: _sass
+plainwhite:
+  name: Adam Denisov
+  tagline: Developer. Designer
+  date_format: "%b %-d, %Y"
+  sitemap: true # set to true to generate sitemap.xml content
+  search: true # set to true to enable searchbar
+  dark_mode: true # set to true to add dark mode toggle
+  portfolio_image: "assets/portfolio.png" # the path from the base directory of the site to the image to display (no / at the start)
+  html_lang: "en" # set the lang attribute of the <html> tag for the pages. See here for a list of codes: https://www.w3schools.com/tags/ref_country_codes.asp
+  condensed_mobile:
+    #- home
+    - page
+    - post
+  # generate social links in footer
+  social_links:
+    twitter: samarsault
+    github:  samarsault
+    linkedIn: in/samarsault
+    #dribbble: jekyll
+    #flickr:   jekyll
+    #instagram: jekyll
+    #pinterest: jekyll
+    #youtube: jekyll
+    #facebook: jekyll
+    #soundcloud: jekyll
+    #telegram: jekyll
+    #gitlab: jekyll
+    #email: jekyll
+
+    # Mastodon instances
+    # mastodon:
+    # - username: jekyll
+    #   instance: example.com
+    # - username: jekyll2
+    #   instance: example.com
+
+# If you want to link only specific pages in your header, uncomment
+# this and add the path to the pages in order as they should show up
+#header_pages:
+# - about.md
+
 # Build settings
-gems:
-  - jemoji
-  - jekyll-paginate
+theme: plainwhite
 
-# Site settings
-title: "Dongwon Yang"
-description: > # this means to ignore newlines until "email:"
-   Computer Architecture and System Software Researcher
-
-email: yang2919@korea.ac.kr
-#blog logo
-logo: "/assets/images/logo.jpeg"
-float_logo: true # true, false (default)
-
-# blog cover
-cover: "/assets/images/cover.jpg"
-
-name: 'Dongwon Yang'
-author: 'Dongwon Yang'
-author_image: "/assets/images/author.jpeg"
-
-paginate:	5
-
-url: "https://comsys-lab.github.io" # the base hostname & protocol for your site
-baseurl: ""
-#used to display twitter cards
-twitter_handle: '@dirkfabisch'
-
-#fill in disqus shortname to use disqus
-#disqus: disqus-shortname
-
-#google_analytics: UA-XXXXX-X
-
-# social icons and sharing options
-social:
-  # - icon:	twitter
-  #   url:	https://twitter.com/dirkfabisch
-  #   desc: Follow me on twitter
-  #   share_url: http://twitter.com/share
-  #   share_title: ?text=
-  #   share_link: "&amp;url="
-
-#  - icon:	facebook
-#    url:	https://facebook.com/???
-#    desc: Connect with me facebook
-#    share_url: https://www.facebook.com/sharer.php
-#    share_title: ?t=
-#    share_link: "&amp;u="
-
-  - icon:	github
-    url:	https://github.com/yang2919
-    desc:	
-    share_url:
-    share_title:
-    share_link:
-
-#  - icon:	google-plus
-#    url:	https://google.com/???
-#    desc:	Add me on google+
-#    share_url:
-#    share_title:
-#    share_link:
+plugins:
+  - jekyll-seo-tag
+#  - jekyll-feed
