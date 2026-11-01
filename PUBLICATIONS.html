@@ -1,0 +1,121 @@
+---
+layout: default
+title : Publications
+navbar_title: Publications
+permalink: /publications/
+body_attr: >-
+  data-spy="scroll" data-target="#navbar-year" data-offset="100"
+---
+
+{% assign pubs_by_year = site.publications | sort: "date" | reverse | group_by_exp: "item", "item.date | date: '%Y'" %}
+
+{%- assign recent_years = "" | split: "" -%}
+{%- assign older_pubs = "" | split: "" -%}
+
+{%- for year in pubs_by_year -%}
+  {% if year.name >= '2020' %}
+    {% assign recent_years = recent_years | push: year %}
+  {% else %}
+    {% assign older_pubs = older_pubs | concat: year.items %}
+  {% endif %}
+{%- endfor -%}
+
+<style>
+  /* Flexbox 容器 */
+  .publication-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    border-bottom: 1px solid #e1e4e8;
+    margin: 0.5rem 0;
+    padding: 0.5rem 0;
+  }
+
+  .publication-left {
+    margin-left: 33px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80px;
+    width: 100px;
+    text-align: center;
+    flex-wrap: wrap;
+    white-space: normal;
+    align-content: center;
+  }
+
+  .publication-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .publication-container:last-child {
+    border-bottom: none;
+  }
+
+  @media (max-width: 767.98px) {
+    .publication-left {
+      margin-left: 5px;
+      max-width: 72px;
+    }
+    .publication-right {
+      margin-right: 10px;
+    }
+  }
+
+  /* Year Nav Styles */
+  #navbar-year .nav-link {
+    color: var(--accent-color);
+  }
+
+  #navbar-year .nav-link.active {
+    color: #ffffff !important;
+    background-color: var(--accent-color);
+    border-radius: 4px;
+  }
+</style>
+
+{% if site.publications.size == 0 %}
+<div class="my-4 p-4 bg-white shadow-sm rounded-sm">
+  <h1 class="h5">Publications</h1>
+  <p class="text-muted mb-0">Publications will be added here.</p>
+</div>
+{% else %}
+<div class="row">
+  <!-- Main content area -->
+  <div class="col-12 col-lg-10">
+    {% for year in recent_years %}
+      <h6 class="pt-5" id="year-{{ year.name }}" style="font-size: 1.25rem;">{{ year.name }}</h6>
+      <div class="my-0 p-3 bg-white shadow-sm rounded-sm">
+        {% for item in year.items %}
+          {% include widgets/publication_item.html item=item hide_bottom_border=forloop.last first=forloop.first last=forloop.last %}
+        {% endfor %}
+      </div>
+    {% endfor %}
+
+    {% if older_pubs.size > 0 %}
+      <h6 class="pt-5" id="year-before-2020" style="font-size: 1.25rem;">Before 2020</h6>
+      <div class="my-0 p-3 bg-white shadow-sm rounded-sm">
+        {% for item in older_pubs %}
+          {% include widgets/publication_item.html item=item hide_bottom_border=forloop.last first=forloop.first last=forloop.last %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+
+  <!-- Year navbar -->
+  <div class="col-2 d-none d-lg-block">
+    <div id="navbar-year" class="nav nav-pills flex-column sticky-top" style="top: 150px">
+      {% for year in recent_years %}
+        <a class="nav-link d-block" href="#year-{{ year.name }}">{{ year.name }}</a>
+      {% endfor %}
+      {% if older_pubs.size > 0 %}
+        <a class="nav-link d-block" href="#year-before-2020">Before 2020</a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endif %}

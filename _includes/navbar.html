@@ -1,0 +1,31 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    /* 小屏幕下调整折叠按钮的大小 */
+    @media (max-width: 767.98px) {
+      .navbar-toggler {
+        font-size: 0.8em !important;
+        padding: 1em !important;
+      }
+    }
+  </style>
+</head>
+
+<nav class="navbar navbar-expand-sm navbar-dark site-navbar fixed-top mb-5 shadow-sm" style="padding-top: 20px; padding-bottom: 10px;">
+    <div class="{% if page.container_class %}{{ page.container_class }}{% else %}container-lg{% endif %}">
+        <a class="navbar-brand"><strong>{{site.data.profile.navbar_name}}</strong></a>
+        <button class="navbar-toggler" style="font-size: 1em; padding: 1.5em;" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-map"></i> Menu
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                {% for item in site.data.navigation.pages %}
+                <li class="nav-item {% if item.name == page.navbar_title %}active{% endif %}">
+                    <a class="nav-link" href="{{ item.url | relative_url }}">{{ item.name }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</nav>

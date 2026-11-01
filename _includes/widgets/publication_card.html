@@ -1,0 +1,39 @@
+<style>
+  .pub-card-title a {
+    color: #555 !important;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .pub-card-title a:hover {
+    color: var(--accent-color) !important;
+  }
+  @media (max-width: 767.98px) {
+    .pub-header-mobile {
+      padding-left: 1.25rem !important;
+    }
+    .pub-content-mobile {
+      padding-left: 1.25rem !important;
+      padding-right: 1.25rem !important;
+    }
+  }
+</style>
+
+<div class="my-3 p-0 bg-white shadow-sm rounded-sm">
+    <h6 class="border-bottom border-gray mb-0 pub-header-mobile" style="font-size: 1.25rem; padding: 0.75rem 1rem 0.75rem 3rem;">
+        {% if include.title %}{{ include.title }}{% else %}Selected Recent Publications{% endif %}
+    </h6>
+    <div class="pub-content-mobile" style="padding: 0.5rem 3rem 0.75rem;">
+        {% assign publications = include.publications %}
+        {% for item in publications limit:include.limit %}
+            <div style="margin-top: 0.85rem; padding-bottom: 0.85rem; {% unless forloop.last %}border-bottom: 1px solid #f0f0f0;{% endunless %}">
+                <div class="pub-card-title" style="font-size: 0.97rem; margin-bottom: 0.25rem; line-height: 1.4; color: #555;">{{ item.title }}</div>
+                <div style="font-size: 0.875rem; color: #555; margin-bottom: 0.2rem;">
+                    {{ item.authors | array_to_sentence_string }}
+                </div>
+                <div style="font-size: 0.875rem;">
+                    {{ item.cover_text }}. <span style="color: #555;">{{ item.pub }}</span>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,83 @@
+---
+layout: default
+title : Homepage
+navbar_title: Home
+---
+
+<style>
+  .two-col-layout {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.75rem;
+    margin-top: 2rem;
+  }
+  .sidebar-col {
+    flex: 0 0 220px;
+    position: sticky;
+    top: 80px;
+  }
+  .main-col {
+    flex: 1;
+    min-width: 0;
+  }
+  .bio-card {
+    background: #fff;
+    border-radius: 0.25rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    padding: 2rem 3rem;
+    margin-bottom: 0;
+  }
+  @media (max-width: 767.98px) {
+    .two-col-layout {
+      flex-direction: column;
+    }
+    .sidebar-col {
+      position: static;
+      width: 100%;
+      flex: none;
+    }
+    .bio-card {
+      padding: 1.5rem;
+    }
+  }
+</style>
+
+<div class="two-col-layout">
+
+  <!-- Left: sticky sidebar -->
+  <div class="sidebar-col">
+    {% include widgets/profile_card.html %}
+  </div>
+
+  <!-- Right: bio + cards -->
+  <div class="main-col">
+
+    <!-- Bio -->
+    <div class="bio-card">
+      <div class="text-profile-bio">
+        {{ site.data.profile.short_bio }}
+      </div>
+    </div>
+
+    <!-- Updates -->
+    {% if site.data.display.homepage.show_news %}
+      {% assign count_news = site.news | size %}
+      {% if count_news > 0 %}
+        {% include widgets/news_card.html %}
+      {% endif %}
+    {% endif %}
+
+    <!-- Selected Publications -->
+    {% if site.data.display.homepage.show_selected_publications %}
+      {% assign pubs = site.publications | sort: "date" | reverse | where: "selected", true %}
+      {% if pubs.size > 0 %}
+      {%
+        include widgets/publication_card.html
+        publications=pubs
+        title='Publications'
+      %}
+      {% endif %}
+    {% endif %}
+
+  </div>
+</div>

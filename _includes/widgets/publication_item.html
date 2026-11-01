@@ -1,0 +1,69 @@
+{% assign item = include.item %}
+
+{%- if include.show_icon == false or include.show_icon == 'false' -%}
+  {% assign show_icon = false %}
+{%- elsif include.show_icon == true or include.show_icon == 'true' -%}
+  {% assign show_icon = true %}
+{%- else -%}
+  {% assign show_icon = item.show_icon %}
+{%- endif -%}
+
+
+
+<style>
+  .enlarge-img img {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    cursor: pointer;
+    opacity: 0.9;
+  }
+
+  .enlarge-img img:hover {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+
+  a.paper-link {
+    color: black;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  a.paper-link:hover {
+    color: var(--accent-color);
+  }
+</style>
+
+<div class="publication-container">
+  <!-- 左侧：显示 publication 的动态文本 -->
+  <div class="publication-left" style="font-size: 0.93rem;">
+    <div>{{ item.cover_text }}</div>
+    {% if show_icon %}
+      <div style="margin-top: 12px; text-align: center;" class="pub-icon">
+        <a href="{{ item.icon_link }}" target="_blank" class="enlarge-img">
+          <img src="{{ item.icon_image }}" alt="" style="width: 25px; height: auto;" />
+        </a>
+      </div>
+    {% endif %}
+  </div>
+
+  <!-- 右侧：显示其他详细信息 -->
+  <div class="publication-right">
+    <h5 class="mt-0 mb-1 font-weight-normal" style="font-size: 1rem;">{{ item.title }}</h5>
+    <p class="mt-0 mb-0 small">
+      {{ item.authors | array_to_sentence_string }}
+    </p>
+    <p class="mt-0 mb-0 small">
+      {{ item.pub_pre }}<i>{{ item.pub }}</i>{{ item.pub_post }} {{ item.pub_date }} {{ item.pub_last }}
+    </p>
+    <p class="mt-0 mb-0 small text-muted">{{ item.abstract }}</p>
+    <p class="small pb-0 mb-0 lh-125 text-muted abstract-links">
+      {% for link in item.links %}
+        {% if link[1].url %}
+          <a target="{{ link[1]['target'] }}" href="{{ link[1]['url'] }}">[{{ link[0] }}]</a>
+        {% else %}
+          <a target="_blank" href="{{ link[1] }}">[{{ link[0] }}]</a>
+        {% endif %}
+      {% endfor %}
+    </p>
+  </div>
+</div>

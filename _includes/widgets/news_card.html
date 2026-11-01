@@ -1,0 +1,118 @@
+<style>
+  .news-ul {
+    list-style: none;
+    margin: 0 1rem;
+    padding: 0;
+  }
+  @media (max-width: 767.98px) {
+    .news-ul {
+      margin: 0 0.25rem;
+    }
+    .news-header-mobile {
+      padding-left: 1.25rem !important;
+    }
+    .news-content-mobile {
+      padding-left: 1.25rem !important;
+      padding-right: 1.25rem !important;
+    }
+  }
+  .news-toggle-btn {
+    background: none;
+    border: none;
+    color: #6c757d;
+    font-size: 0.85rem;
+    cursor: pointer;
+    padding: 4px 0;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .news-toggle-btn:hover {
+    color: #343a40;
+  }
+  .news-toggle-btn .toggle-icon {
+    transition: transform 0.2s ease;
+    display: inline-block;
+  }
+  .news-toggle-btn.expanded .toggle-icon {
+    transform: rotate(180deg);
+  }
+  #older-news {
+    display: none;
+  }
+  #older-news.show {
+    display: block;
+  }
+</style>
+
+<div class="my-3 bg-white shadow-sm rounded-sm">
+  <h6 class="mb-2 border-bottom border-gray news-header-mobile" style="font-size: 1.25rem; padding: 0.75rem 1rem 0.75rem 3rem;">Updates</h6>
+  {% assign news_sorted = site.news | sort: "date" | reverse %}
+  {% assign older_count = 0 %}
+  {% for item in news_sorted %}
+    {% assign item_year = item.date | date: "%Y" %}
+    {% if item_year < "2024" %}
+      {% assign older_count = older_count | plus: 1 %}
+    {% endif %}
+  {% endfor %}
+  <div class="pb-3 news-content-mobile" style="padding-left: 3rem;">
+    <ul class="news-ul" style="margin: 0;">
+      {% for item in news_sorted %}
+        {% assign item_year = item.date | date: "%Y" %}
+        {% if item_year >= "2024" %}
+          <li style="margin-bottom: -3px; padding: 5px 0; display: flex;">
+            <span style="flex: 0 0 70px; font-weight: 500; margin-right: 10px; font-size: 0.95rem;">
+              {{ item.date | date: "%m/%Y" }}
+            </span>
+            <span style="flex: 1; font-size: 0.97rem;">
+              {{ item.title }}
+            </span>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+
+    {% if older_count > 0 %}
+      <div style="margin: 6px 0 0;">
+        <button class="news-toggle-btn" onclick="toggleOlderNews(this)" aria-expanded="false">
+          <span class="toggle-icon">&#9660;</span>
+          <span class="btn-label">Show older news</span>
+        </button>
+      </div>
+      <ul class="news-ul" id="older-news" style="margin: 0;">
+        {% for item in news_sorted %}
+          {% assign item_year = item.date | date: "%Y" %}
+          {% if item_year < "2024" %}
+            <li style="margin-bottom: -3px; padding: 5px 0; display: flex;">
+              <span style="flex: 0 0 70px; font-weight: 500; margin-right: 10px; font-size: 0.95rem;">
+                {{ item.date | date: "%m/%Y" }}
+              </span>
+              <span style="flex: 1; font-size: 0.97rem;">
+                {{ item.title }}
+              </span>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+</div>
+
+<script>
+function toggleOlderNews(btn) {
+  var panel = document.getElementById('older-news');
+  var label = btn.querySelector('.btn-label');
+  var expanded = btn.getAttribute('aria-expanded') === 'true';
+  if (expanded) {
+    panel.classList.remove('show');
+    btn.classList.remove('expanded');
+    btn.setAttribute('aria-expanded', 'false');
+    label.textContent = 'Show older news';
+  } else {
+    panel.classList.add('show');
+    btn.classList.add('expanded');
+    btn.setAttribute('aria-expanded', 'true');
+    label.textContent = 'Hide older news';
+  }
+}
+</script>

@@ -1,0 +1,36 @@
+primary_name: "Dongwon Yang"
+secondary_name: "M.S./Ph.D. Student"
+navbar_name: "Dongwon Yang <br><small>Graduate Student in Korea University</small>"
+department: "Department of Semiconductor System Engineering"
+institution: "Korea University"
+lab_name: "ComSys Lab"
+lab_url: "https://comsys-lab.github.io/"
+email: "yang2919@korea.ac.kr"
+github: "yang2919"
+portrait_url: /assets/images/photos/photo.jpeg?v=1f4d2a0252ec
+cv_link:
+gscholar:
+linkedin:
+short_bio: >-
+  <p>
+    I am a second-year M.S./Ph.D. student in the
+    Department of Semiconductor System Engineering at Korea University.
+    I am a member of <a href="https://comsys-lab.github.io/">ComSys Lab</a>,
+    advised by Prof. Yunho Oh.
+  </p>
+  <p>
+    My research interests focus on designing <strong>advanced computing systems</strong>,
+    including hardware and software architectures for <strong>GPUs</strong> and
+    <strong>processing-in-memory (PIM) systems</strong>. I aim to improve resource utilization,
+    performance, and energy efficiency to support demanding applications in
+    resource-constrained environments.
+  </p>
+
+education:
+  - name: "Korea University"
+    position: "M.S./Ph.D., Department of Semiconductor System Engineering"
+    date: "Mar. 2025 – Present"
+    advisor: "Prof. Yunho Oh"
+  - name: "Korea University"
+    position: "B.S. in Semiconductor Engineering"
+    date: "Mar. 2021 – Feb. 2025"

@@ -1,0 +1,94 @@
+<style>
+  .sidebar-card {
+    background: transparent;
+    border-radius: 0.5rem;
+    box-shadow: none;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    position: relative;
+  }
+  .sidebar-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 0.5rem;
+    box-shadow: inset 0 0 30px 10px #f8f9fa;
+    pointer-events: none;
+  }
+  .sidebar-card img.portrait {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
+  .sidebar-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    line-height: 1.3;
+  }
+  .sidebar-title {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 1.25rem;
+    line-height: 1.5;
+  }
+  .sidebar-icons a {
+    color: var(--accent-color);
+    font-size: 1.4rem;
+    margin: 0 0.4rem;
+    text-decoration: none;
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+  }
+  .sidebar-icons a:hover {
+    color: var(--accent-hover);
+    transform: scale(1.15);
+  }
+</style>
+
+<div class="sidebar-card">
+  {% if site.data.profile.portrait_url %}
+    <img class="portrait" src="{{ site.data.profile.portrait_url | relative_url }}" alt="{{ site.data.profile.primary_name | escape }}">
+  {% endif %}
+  <div class="sidebar-name">{{ site.data.profile.primary_name }}</div>
+  <div class="sidebar-title">{{ site.data.profile.secondary_name }}</div>
+  <div class="sidebar-title">
+    {{ site.data.profile.department }}<br>
+    {{ site.data.profile.institution }}<br>
+    <a href="{{ site.data.profile.lab_url }}">{{ site.data.profile.lab_name }}</a>
+  </div>
+  <div class="sidebar-icons">
+    {% if site.data.profile.email %}
+      <a href="mailto:{{ site.data.profile.email | encode_email }}" title="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+    {% endif %}
+    {% if site.data.profile.github %}
+      <a href="https://github.com/{{ site.data.profile.github }}" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+    {% endif %}
+    {% if site.data.profile.gscholar %}
+      {%- if site.data.profile.gscholar contains 'scholar.google' -%}
+        {%- assign gscholar_url = site.data.profile.gscholar -%}
+      {%- else -%}
+        {%- assign gscholar_url = 'https://scholar.google.com/citations?user=' | append: site.data.profile.gscholar -%}
+      {%- endif -%}
+      <a href="{{ gscholar_url }}" target="_blank" title="Google Scholar">
+        <i class="ai ai-google-scholar"></i>
+      </a>
+    {% endif %}
+    {% if site.data.profile.linkedin %}
+      <a href="https://www.linkedin.com/in/{{ site.data.profile.linkedin }}" target="_blank" title="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a>
+    {% endif %}
+    {% if site.data.profile.cv_link %}
+      <a href="{{ site.data.profile.cv_link | relative_url }}" target="_blank" title="CV">
+        <i class="fas fa-address-card"></i>
+      </a>
+    {% endif %}
+  </div>
+</div>
