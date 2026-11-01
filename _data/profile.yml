@@ -21,9 +21,9 @@ short_bio: >-
   <p>
     My research interests focus on designing <strong>advanced computing systems</strong>,
     including hardware and software architectures for <strong>GPUs</strong> and
-    <strong>processing-in-memory (PIM) systems</strong>. I aim to improve resource utilization,
-    performance, and energy efficiency to support demanding applications in
-    resource-constrained environments.
+    <strong>processing-in-memory (PIM) systems</strong>. I aim to improve performance and 
+    energy efficiency for demanding applications through effective use of hardware 
+    resources, particularly in resource-constrained environments.
   </p>
 
 education:
