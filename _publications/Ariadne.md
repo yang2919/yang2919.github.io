@@ -9,7 +9,6 @@ show_icon: false
 authors:
   - "<strong><u>Dongwon Yang</u></strong>"
   - Jongmin Kim
-  - Minseong Gil
   - Chang Hyun Park
   - Myung Kuk Yoon
   - "Yunho Oh"
