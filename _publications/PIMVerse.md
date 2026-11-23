@@ -1,5 +1,5 @@
 ---
-title: "<strong>PIMVerse: Enabling Architectural Exploration of Data-Dependent Workloads on NDP Systems</strong>"
+title: "<strong><a href='http://doi.org/10.1109/LCA.2026.3752542' target='_blank' rel='noopener noreferrer' class='paper-link'>PIMVerse: Enabling Architectural Exploration of Data-Dependent Workloads on NDP Systems</a></strong>"
 cover_text: "<strong>IEEE CAL</strong>"
 # Acceptance month from the ComSys Lab news; not a publication date.
 date: 2026-10-01
