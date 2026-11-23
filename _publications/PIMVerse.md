@@ -13,4 +13,6 @@ authors:
   - "<strong><u>Dongwon Yang</u></strong>"
   - Myung Kuk Yoon
   - "Yunho Oh"
+links:
+  Paper: "http://doi.org/10.1109/LCA.2026.3752542"
 ---
